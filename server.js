@@ -24,8 +24,9 @@ var persistentDb = require('./wrappedPersistentDb.js');
     }
 };*/
 app.get('/', function(request, response){
-  response.json({default: 'endpoint'})
+  response.json(persistentDb.getData('/'))
 })
+
 app.get('/get', function (request, response) {
     response.json(persistentDb.getData('/'));
 });
