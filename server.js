@@ -26,12 +26,14 @@ var inMemoryDB = {
 
 app.get('/get', function (request, response) {
     console.log("Get request received");
-    response.json({whatever: 'you put here gets sent back to the browser'});
+    response.json(inMemoryDB);
 });
 
 app.post('/post', function(request, response){
     console.log("post request received with data:", request.body)
-
+    inMemoryDB.data.messages.push(request.body, {
+      objectID: '1341342342342'
+    });
     //TODO: Save the data that the browser just sent. You can access the info that was sent down inside request.body
     //TODO: Remember to save the time the chat message was created (using Date.now) and give the chat message an objectId using getRandomString()
 
