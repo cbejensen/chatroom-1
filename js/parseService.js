@@ -10,7 +10,7 @@ app.service('parseService', function($http){
     this.postData = function(message){
         return $http.post('http://localhost:3000/post', {
           text: message,
-          objectId: 'h13hs412sd3r1n23zz',
+          objectId: 'n23u5h8hf9sh82n30nvw0n',
           createdAt: Date.now()
         })
     };

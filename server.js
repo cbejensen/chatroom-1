@@ -2,7 +2,7 @@ var app = require('./expressServer.js')
 var getRandomString = require('./getRandomString.js');
 var persistentDb = require('./wrappedPersistentDb.js');
 
-var inMemoryDB = {
+/*var inMemoryDB = {
     "meta": {
         "engine": "inMemoryDatabase",
         "dbName": "ChatMessagesDatabase"
@@ -22,18 +22,16 @@ var inMemoryDB = {
 
         ]
     }
-};
+};*/
 
 app.get('/get', function (request, response) {
-    console.log("Get request received");
-    response.json(inMemoryDB);
+    response.json(persistentDb.getData('/'));
 });
 
 app.post('/post', function(request, response){
-    console.log("post request received with data:", request.body)
-    inMemoryDB.data.messages.push(request.body, {
-      objectID: '1341342342342'
-    });
+    console.log("post request received:", request.body)
+    persistentDb.pushToArray('/data/messages', request.body);
+  console.log(persistentDb.getData('/data/messages'));
     //TODO: Save the data that the browser just sent. You can access the info that was sent down inside request.body
     //TODO: Remember to save the time the chat message was created (using Date.now) and give the chat message an objectId using getRandomString()
 
