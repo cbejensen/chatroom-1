@@ -8,11 +8,10 @@ app.service('parseService', function($http){
     };
 
     this.postData = function(message){
-        return $http.post('http://localhost:3000/post', {
+        return $http.post('https://tranquil-garden-6961.herokuapp.com/', {
           text: message,
           objectId: 'n23u5h8hf9sh82n30nvw0n',
           createdAt: Date.now()
         })
     };
-
 });

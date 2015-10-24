@@ -27,14 +27,20 @@ app.get('/', function(request, response){
   response.json(persistentDb.getData('/'))
 })
 
-app.get('/get', function (request, response) {
+app.post('/', function(request, response){
+    console.log("post request received:", request.body)
+    persistentDb.pushToArray('/data/messages', request.body);
+  console.log(persistentDb.getData('/data/messages'));
+  
+/*app.get('/get', function (request, response) {
     response.json(persistentDb.getData('/'));
 });
 
 app.post('/post', function(request, response){
     console.log("post request received:", request.body)
     persistentDb.pushToArray('/data/messages', request.body);
-  console.log(persistentDb.getData('/data/messages'));
+  console.log(persistentDb.getData('/data/messages'));*/
+  
     //TODO: Save the data that the browser just sent. You can access the info that was sent down inside request.body
     //TODO: Remember to save the time the chat message was created (using Date.now) and give the chat message an objectId using getRandomString()
 
