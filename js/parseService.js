@@ -4,7 +4,7 @@ app.service('parseService', function($http){
 
     this.getData = function(){
         //You'll need to change this url to your local server GET endpoint
-        return $http.get('http://localhost:3000/get')
+        return $http.get('https://tranquil-garden-6961.herokuapp.com/')
     };
 
     this.postData = function(message){
